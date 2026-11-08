@@ -5,12 +5,19 @@
         "category": "Electronics",
         "price": 1499.0,
         "original_price": 2499.0,
-        "quantity": 10,
+        "quantity": 30,
         "rating": 4.5,
         "rating_count": 128,
         "image": "/static/images/p1.svg",
         "description": "7-in-1 Aluminium Type-C Hub with 4K HDMI, 3 USB 3.0 ports, SD/TF card reader, and 100W Power Delivery.",
-        "image_url": "https://m.media-amazon.com/images/I/618Cnb3N0qL.jpg"
+        "image_url": "https://m.media-amazon.com/images/I/618Cnb3N0qL.jpg",
+        "category_id": 1,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-ELE-0001",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 2,
@@ -18,12 +25,19 @@
         "category": "Electronics",
         "price": 115999.0,
         "original_price": 130999.0,
-        "quantity": 9,
+        "quantity": 8,
         "rating": 4.8,
         "rating_count": 1412,
         "image": "/static/images/p2.svg",
         "description": "a flagship smartphone featuring a 6.9-inch Dynamic AMOLED 2X display, built-in privacy protection, and a 200MP main camera",
-        "image_url": "https://rukminim3.flixcart.com/image/480/640/xif0q/mobile/d/0/x/-resized-original-imahhyzrnhgzvdk4.jpeg?q=90"
+        "image_url": "https://rukminim3.flixcart.com/image/480/640/xif0q/mobile/d/0/x/-resized-original-imahhyzrnhgzvdk4.jpeg?q=90",
+        "category_id": 1,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-ELE-0002",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 3,
@@ -36,7 +50,14 @@
         "rating_count": 890,
         "image": "/static/images/p3.svg",
         "description": "Active Noise Cancellation, 40-hour battery life, plush memory foam earcups, and crystal-clear hands-free calling.",
-        "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+        "category_id": 1,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-ELE-0003",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 4,
@@ -49,7 +70,14 @@
         "rating_count": 340,
         "image": "/static/images/p4.svg",
         "description": "1.78-inch HD curved display, 24/7 heart rate and blood oxygen monitoring, 100+ sports modes, and 7-day battery.",
-        "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+        "category_id": 1,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-ELE-0004",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 5,
@@ -57,12 +85,19 @@
         "category": "Grocery",
         "price": 499.0,
         "original_price": 650.0,
-        "quantity": 30,
+        "quantity": 2,
         "rating": 4.8,
         "rating_count": 215,
         "image": "/static/images/p5.svg",
         "description": "100% single-origin roasted Arabica beans sourced from high-altitude estates with notes of dark chocolate and hazelnut.",
-        "image_url": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=600&q=80",
+        "category_id": 54,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-GRO-0005",
+        "supplier_id": 3,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 6,
@@ -75,7 +110,14 @@
         "rating_count": 180,
         "image": "/static/images/p6.svg",
         "description": "Pure Mediterranean first cold-pressed olive oil, naturally rich in antioxidants and healthy monounsaturated fats.",
-        "image_url": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80",
+        "category_id": 54,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-GRO-0006",
+        "supplier_id": 3,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 7,
@@ -88,7 +130,14 @@
         "rating_count": 320,
         "image": "/static/images/p7.svg",
         "description": "Crisp, unpasteurized natural almonds vacuum-packed to preserve crunch and rich vitamin E content.",
-        "image_url": "https://storage.googleapis.com/shy-pub/303196/ChatGPTImageMay14202604_04_08PM-1783947728828.png"
+        "image_url": "https://storage.googleapis.com/shy-pub/303196/ChatGPTImageMay14202604_04_08PM-1783947728828.png",
+        "category_id": 54,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-GRO-0007",
+        "supplier_id": 3,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 8,
@@ -101,7 +150,14 @@
         "rating_count": 156,
         "image": "/static/images/p8.svg",
         "description": "100% breathable combed cotton with button-down collar, tailored cuffs, and subtle texture ideal for work or casual wear.",
-        "image_url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80",
+        "category_id": 15,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-FAS-0008",
+        "supplier_id": 2,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 9,
@@ -114,7 +170,14 @@
         "rating_count": 278,
         "image": "/static/images/p9.svg",
         "description": "Heavyweight 16oz eco-friendly canvas tote with reinforced double handles and a zippered internal stash pocket.",
-        "image_url": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80",
+        "category_id": 15,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-FAS-0009",
+        "supplier_id": 2,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 10,
@@ -127,7 +190,14 @@
         "rating_count": 190,
         "image": "/static/images/p10.svg",
         "description": "UV400 scratch-resistant polarized lenses with a lightweight stainless steel alloy frame and silicone nose pads.",
-        "image_url": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80",
+        "category_id": 15,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-FAS-0010",
+        "supplier_id": 2,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 11,
@@ -140,7 +210,14 @@
         "rating_count": 520,
         "image": "/static/images/p11.svg",
         "description": "Heavy-duty cast iron pan seasoned with 100% natural vegetable oil for superior heat retention and uniform searing.",
-        "image_url": "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=600&q=80",
+        "category_id": 24,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-HOM-0011",
+        "supplier_id": 4,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 12,
@@ -153,7 +230,14 @@
         "rating_count": 310,
         "image": "/static/images/p12.svg",
         "description": "Microwave and oven-safe containers with airtight silicone clip-lock lids, 100% leakproof and BPA-free.",
-        "image_url": "https://image.made-in-china.com/202f0j00ZQNoSRYtYOgu/4-PCS-Set-Lead-Free-Wholesale-High-Borosilicate-Glass-Lunch-Box.webp"
+        "image_url": "https://image.made-in-china.com/202f0j00ZQNoSRYtYOgu/4-PCS-Set-Lead-Free-Wholesale-High-Borosilicate-Glass-Lunch-Box.webp",
+        "category_id": 24,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-HOM-0012",
+        "supplier_id": 4,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 13,
@@ -166,7 +250,14 @@
         "rating_count": 142,
         "image": "/static/images/p13.svg",
         "description": "Handcrafted matte ceramic base with warm fabric shade, dimmer switch, and energy-efficient warm LED bulb included.",
-        "image_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80",
+        "category_id": 24,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-HOM-0013",
+        "supplier_id": 4,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 14,
@@ -179,7 +270,14 @@
         "rating_count": 640,
         "image": "/static/images/p14.svg",
         "description": "Dermatologist-tested glow formulation with 10% pure ethyl ascorbic acid and moisture-locking hyaluronic acid.",
-        "image_url": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80",
+        "category_id": 31,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-BEA-0014",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 15,
@@ -192,7 +290,14 @@
         "rating_count": 210,
         "image": "/static/images/p15.svg",
         "description": "Sulphate-free purifying shampoo and conditioner set formulated to reduce dandruff and strengthen roots.",
-        "image_url": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=600&q=80",
+        "category_id": 31,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-BEA-0015",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 16,
@@ -205,7 +310,14 @@
         "rating_count": 380,
         "image": "/static/images/p16.svg",
         "description": "40,000 vibrations/min with 5 tailored modes, 2-minute smart timer, and 30-day wireless charging battery.",
-        "image_url": "https://m.media-amazon.com/images/I/71CiwYb8itL.jpg"
+        "image_url": "https://m.media-amazon.com/images/I/71CiwYb8itL.jpg",
+        "category_id": 31,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-BEA-0016",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 17,
@@ -218,7 +330,14 @@
         "rating_count": 490,
         "image": "/static/images/p17.svg",
         "description": "160 GSM thick bleedproof bamboo paper with faux leather binding, dual ribbon bookmarks, and an expandable back pocket.",
-        "image_url": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
+        "category_id": 37,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-BOO-0017",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 18,
@@ -231,7 +350,14 @@
         "rating_count": 135,
         "image": "/static/images/p18.svg",
         "description": "Precision weighted solid brass barrel with German iridium-tipped fine nib and piston ink converter included.",
-        "image_url": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
+        "category_id": 37,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-BOO-0018",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 19,
@@ -244,7 +370,14 @@
         "rating_count": 880,
         "image": "/static/images/p19.svg",
         "description": "Transformative guide to building sustainable habits, deep focus, and high performance in everyday professional life.",
-        "image_url": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80",
+        "category_id": 37,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-BOO-0019",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 20,
@@ -257,7 +390,14 @@
         "rating_count": 310,
         "image": "/static/images/p20.svg",
         "description": "Eco-friendly TPE dual-layer mat with alignment guidelines, joint cushioning, and complimentary carry strap.",
-        "image_url": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&w=600&q=80",
+        "category_id": 43,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-SPO-0020",
+        "supplier_id": 5,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 21,
@@ -270,7 +410,14 @@
         "rating_count": 175,
         "image": "/static/images/p21.svg",
         "description": "Hexagonal anti-roll cast iron weights with comfortable non-slip neoprene coating for home strength workouts.",
-        "image_url": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=600&q=80",
+        "category_id": 43,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-SPO-0021",
+        "supplier_id": 5,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 22,
@@ -283,7 +430,14 @@
         "rating_count": 425,
         "image": "/static/images/p22.svg",
         "description": "Double-wall vacuum insulation keeps drinks chilled for 24 hours or piping hot for 12 hours. Sweat-proof powder finish.",
-        "image_url": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+        "category_id": 43,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-SPO-0022",
+        "supplier_id": 5,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 23,
@@ -296,7 +450,14 @@
         "rating_count": 290,
         "image": "/static/images/p23.svg",
         "description": "Vibrant translucent 3D geometric magnetic building tiles fostering creativity, spatial reasoning, and engineering skills.",
-        "image_url": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=600&q=80",
+        "category_id": 49,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-TOY-0023",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 24,
@@ -304,12 +465,19 @@
         "category": "Toys & Accessories",
         "price": 2799.0,
         "original_price": 4499.0,
-        "quantity": 7,
+        "quantity": 9,
         "rating": 4.4,
         "rating_count": 140,
         "image": "/static/images/p24.svg",
         "description": "Altitude hold, 360-degree flip maneuvers, one-key return, and real-time FPV Wi-Fi camera with smartphone holder.",
-        "image_url": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&q=80",
+        "category_id": 49,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-TOY-0024",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
     },
     {
         "id": 25,
@@ -322,6 +490,53 @@
         "rating_count": 510,
         "image": "/static/images/p25.svg",
         "description": "Stickerless frosted surface with anti-pop mechanism and adjustable tension for lightning-fast competition turns.",
-        "image_url": "https://images.unsplash.com/photo-1591991731833-b4807cf7ef94?auto=format&fit=crop&w=600&q=80"
+        "image_url": "https://images.unsplash.com/photo-1591991731833-b4807cf7ef94?auto=format&fit=crop&w=600&q=80",
+        "category_id": 49,
+        "subcategory_id": null,
+        "nested_category_id": null,
+        "sku": "EC-TOY-0025",
+        "supplier_id": 1,
+        "gallery_images": null,
+        "is_active": 1
+    },
+    {
+        "id": 26,
+        "name": "HIGHLANDER Men Grey Self Design Slim Fit Party Shirt",
+        "category": "Fashion",
+        "price": 499.0,
+        "original_price": 999.0,
+        "quantity": 30,
+        "rating": 4.5,
+        "rating_count": 1,
+        "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ35B4Q0GvRBElOSCB7UBiNeskZMw7lyphC6Gx1LbuIE615PsoFLX8w3H91onKmXpXATJECj20a3-0sPHdaAGt_WjYVcI8U0XpIPkNe9aH-ORouAnCXB5xw",
+        "description": "",
+        "image_url": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQ35B4Q0GvRBElOSCB7UBiNeskZMw7lyphC6Gx1LbuIE615PsoFLX8w3H91onKmXpXATJECj20a3-0sPHdaAGt_WjYVcI8U0XpIPkNe9aH-ORouAnCXB5xw",
+        "category_id": 15,
+        "subcategory_id": 16,
+        "nested_category_id": 17,
+        "sku": "EC-ELE-5916",
+        "supplier_id": 1,
+        "gallery_images": "[\"https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQl0zFs3OjhUyfvv7H6V-JNG-4QXOJi-IpBng9LwyJHviai2KIAL6ACubIy0xVgy9gHpnFFrPpUe1x-FRp-k0_vQ2AIdrtm9GiVqUM2aEe9\", \"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT-l0UOJxTIEp8ee_ndUYe9rumfkFaZCX2m7zyL-MKsY2ohBgai_ficSLy1r6DodslfI76bWNldIoIndPwMKL7HEhRIcHfqlJyZdNRCOLyeOxf8IYecKJdufw\"]",
+        "is_active": 1
+    },
+    {
+        "id": 27,
+        "name": "Mandarin Collar Embroidered Ethnic Tunic",
+        "category": "Fashion",
+        "price": 1159.0,
+        "original_price": 2299.0,
+        "quantity": 25,
+        "rating": 4.5,
+        "rating_count": 1,
+        "image": "https://cpimg.tistatic.com/12942004/b/4/Blue-Color-Embroidery-Work-Women-Shirt..jpeg",
+        "description": "",
+        "image_url": "https://cpimg.tistatic.com/12942004/b/4/Blue-Color-Embroidery-Work-Women-Shirt..jpeg",
+        "category_id": 15,
+        "subcategory_id": 20,
+        "nested_category_id": null,
+        "sku": "EC-ELE-2966",
+        "supplier_id": null,
+        "gallery_images": "[\"https://cpimg.tistatic.com/12942005/b/4/blue-color-embroidery-work-women-shirt.jpeg\", \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCeZ1WcmKb4U95LYCTxIAdM5xn8GLIvw4z-D1kyCef1w&s\"]",
+        "is_active": 1
     }
 ]

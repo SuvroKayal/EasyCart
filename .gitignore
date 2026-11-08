@@ -1,3 +1,9 @@
+# Node / Frontend
+node_modules/
+Frontend/node_modules/
+Frontend/dist/
+*.tsbuildinfo
+
 # Python
 __pycache__/
 *.py[cod]
@@ -16,6 +22,8 @@ env/
 .env
 .env.local
 .env.production
+.dev_secret.key
+*.key
 
 # SQLite database (not used in production, but exclude anyway)
 *.db
