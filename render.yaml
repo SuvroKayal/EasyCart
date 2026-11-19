@@ -6,11 +6,19 @@ services:
     runtime: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
+    healthCheckPath: /api/health
     envVars:
       - key: DATABASE_URL
-        sync: false            # Set manually in Render Dashboard
+        sync: false            # Set manually in Render Dashboard (Supabase PostgreSQL URL)
       - key: SECRET_KEY
         generateValue: true    # Render auto-generates a strong random secret
+      - key: ADMIN_EMAILS
+        sync: false            # Set in Render Dashboard (comma-separated admin emails)
+      - key: GOOGLE_CLIENT_ID
+        sync: false            # Optional: Google OAuth Client ID
+      - key: REDIS_URL
+        sync: false            # Optional: Redis store for distributed rate limiting
+      - key: FLASK_ENV
+        value: "production"
       - key: PYTHON_VERSION
         value: "3.12.3"
-

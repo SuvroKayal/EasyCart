@@ -1,24 +1,21 @@
 """
 EasyCart Application Root Entry Point.
-Delegates to the application located in Backend/app.py.
+Delegates to the modular application factory in Backend.
+Compatible with Render (gunicorn app:app), Vercel, and local execution.
 """
-import sys
 import os
+import sys
 
-backend_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Backend')
+project_root = os.path.dirname(os.path.abspath(__file__))
+backend_dir = os.path.join(project_root, 'Backend')
 if backend_dir not in sys.path:
     sys.path.insert(0, backend_dir)
 
-import importlib.util
-spec = importlib.util.spec_from_file_location("backend_app", os.path.join(backend_dir, "app.py"))
-backend_module = importlib.util.module_from_spec(spec)
-sys.modules["backend_app"] = backend_module
-spec.loader.exec_module(backend_module)
+from Backend import create_app
 
-app = backend_module.app
-get_db = getattr(backend_module, 'get_db', None)
-init_db = getattr(backend_module, 'init_db', None)
+app = create_app()
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    debug_mode = os.environ.get('FLASK_DEBUG', '0') == '1'
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)

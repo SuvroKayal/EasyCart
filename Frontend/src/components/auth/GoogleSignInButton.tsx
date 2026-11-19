@@ -48,24 +48,32 @@ export const GoogleSignInButton: React.FC<GoogleSignInButtonProps> = ({
 }) => {
   const { theme } = useTheme();
   const buttonContainerRef = useRef<HTMLDivElement>(null);
-  const [clientId, setClientId] = useState<string>(
-    '334860227356-tmgcjjar1p1bf8g14nllr2qolldu60gr.apps.googleusercontent.com'
-  );
+  const [clientId, setClientId] = useState<string>('');
+  const [googleEnabled, setGoogleEnabled] = useState<boolean>(true);
   const [gisLoaded, setGisLoaded] = useState<boolean>(false);
   const [internalLoading, setInternalLoading] = useState<boolean>(false);
 
-  // Fetch client ID from backend configuration to ensure sync
+  // Fetch client ID from backend configuration to ensure sync (no hardcoded fallback)
   useEffect(() => {
     let isMounted = true;
     api
       .getAuthConfig()
       .then((cfg) => {
-        if (isMounted && cfg.google_client_id) {
-          setClientId(cfg.google_client_id);
+        if (isMounted) {
+          if (cfg.google_client_id && cfg.google_enabled !== false) {
+            setClientId(cfg.google_client_id);
+            setGoogleEnabled(true);
+          } else {
+            setClientId('');
+            setGoogleEnabled(false);
+          }
         }
       })
       .catch(() => {
-        // Fallback to configured default
+        if (isMounted) {
+          setClientId('');
+          setGoogleEnabled(false);
+        }
       });
     return () => {
       isMounted = false;
@@ -94,9 +102,9 @@ export const GoogleSignInButton: React.FC<GoogleSignInButtonProps> = ({
     };
   }, []);
 
-  // Initialize and render Google button when script and DOM container are ready
+  // Initialize and render Google button when script, container, and valid client ID are ready
   useEffect(() => {
-    if (!gisLoaded || !clientId || !buttonContainerRef.current) return;
+    if (!gisLoaded || !clientId || !googleEnabled || !buttonContainerRef.current) return;
 
     try {
       window.google!.accounts.id.initialize({
@@ -134,9 +142,13 @@ export const GoogleSignInButton: React.FC<GoogleSignInButtonProps> = ({
     } catch (err: any) {
       console.error('Error rendering Google button:', err);
     }
-  }, [gisLoaded, clientId, theme, text, onSuccess, onError]);
+  }, [gisLoaded, clientId, googleEnabled, theme, text, onSuccess, onError]);
 
   const handleCustomClick = () => {
+    if (!clientId || !googleEnabled) {
+      onError('Google sign-in is not configured. Please use email and password.');
+      return;
+    }
     if (window.google?.accounts?.id) {
       window.google.accounts.id.prompt((notification: any) => {
         if (notification.isNotDisplayed()) {
@@ -149,6 +161,14 @@ export const GoogleSignInButton: React.FC<GoogleSignInButtonProps> = ({
   };
 
   const isBusy = isLoading || internalLoading;
+
+  if (!googleEnabled) {
+    return (
+      <div className="w-full text-center py-2.5 px-3 rounded-xl bg-stone-50 dark:bg-dark-card/50 border border-softBorder dark:border-dark-border text-mutedGrey dark:text-dark-muted text-[11px]">
+        Google sign-in is not configured on this server. Please continue with email and password.
+      </div>
+    );
+  }
 
   return (
     <div className="w-full flex flex-col items-center justify-center space-y-2">

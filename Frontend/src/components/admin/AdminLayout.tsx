@@ -81,7 +81,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
               title="Return to Public Storefront"
             >
               <img
-                src="/banner/EasyCart%20logo%20transparent.png"
+                src="/banner/EasyCart%20logo.png"
                 alt="EasyCart"
                 className="h-8 w-auto object-contain"
               />

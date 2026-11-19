@@ -76,7 +76,7 @@ export const InvoiceModal: React.FC<InvoiceModalProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <img
-                  src="/banner/EasyCart%20logo%20transparent.png"
+                  src="/banner/EasyCart%20logo.png"
                   alt="EasyCart"
                   className="h-9 w-auto object-contain"
                 />

@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="lg:col-span-4 space-y-4">
               <div className="flex items-center gap-2.5">
                 <img
-                  src="/banner/EasyCart%20logo%20transparent.png"
+                  src="/banner/EasyCart%20logo.png"
                   alt="EasyCart"
                   className="h-10 w-auto object-contain"
                 />

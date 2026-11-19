@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <div className="relative flex items-center justify-center">
               <img
-                src="/banner/EasyCart%20logo%20transparent.png"
+                src="/banner/EasyCart%20logo.png"
                 alt="EasyCart"
                 className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-102"
                 onError={(e) => {

@@ -161,11 +161,11 @@ export const api = {
   },
 
   // Authentication
-  async getAuthConfig(): Promise<{ google_client_id: string; auth_providers: string[] }> {
+  async getAuthConfig(): Promise<{ google_client_id: string; google_enabled?: boolean; auth_providers: string[]; providers?: string[] }> {
     const res = await apiFetch(`${API_BASE}/auth/config`, {
       credentials: 'include',
     });
-    return handleResponse<{ google_client_id: string; auth_providers: string[] }>(res);
+    return handleResponse<{ google_client_id: string; google_enabled?: boolean; auth_providers: string[]; providers?: string[] }>(res);
   },
 
   async googleLogin(credential: string): Promise<{ success: boolean; user: User; message: string }> {

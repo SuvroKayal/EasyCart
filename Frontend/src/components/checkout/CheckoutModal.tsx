@@ -87,6 +87,25 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       return;
     }
 
+    // Validate 10-digit Indian mobile number
+    const rawPhone = formData.phone.replace(/[\s\-().+]/g, '');
+    let cleanPhone = rawPhone;
+    if (cleanPhone.startsWith('91') && cleanPhone.length === 12) {
+      cleanPhone = cleanPhone.slice(2);
+    } else if (cleanPhone.startsWith('0') && cleanPhone.length === 11) {
+      cleanPhone = cleanPhone.slice(1);
+    }
+    if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+      setError('Please enter a valid 10-digit mobile number.');
+      return;
+    }
+
+    // Validate 6-digit PIN code
+    if (!/^\d{6}$/.test(formData.postal_code.trim())) {
+      setError('Please enter a valid 6-digit postal PIN code.');
+      return;
+    }
+
     try {
       setIsSubmitting(true);
       const res = await api.checkout(

@@ -25,13 +25,15 @@ The user interface implements an Apple-inspired Liquid Glass aesthetic:
 - **State Management**: React Context (`AuthContext`, `CartContext`, `ThemeContext`, `ToastProvider`)
 - **Client Networking**: Native Fetch API with session credential preservation (`credentials: 'include'`)
 
-### Backend (Python Flask REST Services)
-- **Framework**: Python Flask 3.0+
-- **Database**: SQLite 3 (`Backend/easycart.db`) with ACID transaction integrity and automatic PostgreSQL compatibility
-- **Authentication**: Session-backed with PBKDF2/SHA-256 password hashing via Werkzeug
-- **Cart & Pricing Engine**: Server-authoritative calculation at `POST /api/cart/calculate`
-- **Checkout & Inventory**: Atomic inventory deduction, unique sequential order IDs (`EC-XXXXXX`), and printable invoice rendering at `POST /api/cart/checkout`
-- **Admin Control APIs**: 14+ dedicated admin endpoints under `/api/admin/*` protected by `@admin_required`
+### Backend (Modular Flask Blueprint Architecture)
+- **Framework**: Python Flask 3.0.2 with Application Factory pattern (`create_app`)
+- **Architecture**: Modular Blueprints (`auth`, `products`, `cart`, `checkout`, `orders`, `admin`, `suppliers`)
+- **WSGI Entry Point**: Production WSGI compatible (`gunicorn app:app` for Render & cloud deployment)
+- **Database Engine**: Dual-mode database layer supporting Supabase PostgreSQL (production) with automatic fallback to local SQLite (`Backend/easycart.db`) with 15 strategic indexes
+- **Transaction Safety**: Context-managed atomic transactions with automatic rollback on error
+- **Inventory Concurrency**: Atomic inventory deduction (`UPDATE products SET quantity = quantity - %s WHERE id = %s AND quantity >= %s`) preventing race conditions and overselling
+- **Security Hardening**: Sliding-window IP rate limiting, CSRF defense headers, magic bytes image verification, and server-enforced administrator allowlist
+- **Authentication**: Google Identity Services OAuth 2.0 with signature verification + PBKDF2/SHA-256 password hashing via Werkzeug
 
 ---
 
@@ -103,32 +105,55 @@ FLASK_ENV=production
 
 ---
 
-## 📁 Cleaned Project Directory Structure
+## 📁 Project Directory Structure (Modular Blueprint Architecture)
 
 ```text
 EasyCart/
-├── app.py                          # Root launcher (imports and serves Flask app & React SPA)
-├── requirements.txt                # Python dependencies (Flask, Werkzeug, psycopg, gunicorn)
+├── app.py                          # WSGI root entry point (delegates to Backend.create_app())
+├── requirements.txt                # Python dependencies (Flask 3, Werkzeug, psycopg, gunicorn, pytest)
 ├── README.md                       # Master system documentation
-├── test_regression.py              # 103-point automated regression test suite
+├── .env.example                    # Environment configuration template
+├── run_tests.py                    # Unified test runner (executes both unit & regression tests)
+├── test_regression.py              # 144-point automated end-to-end regression test suite
+│
+├── tests/                          # Modular Automated Test Suite (23 test cases)
+│   ├── base.py                     # BaseTestCase with isolated test database & fixtures
+│   ├── conftest.py                 # Pytest fixtures and app configuration
+│   ├── test_cart.py                # Server-side pricing & quantity boundary tests
+│   ├── test_coupons.py             # Percentage, flat, cap & threshold coupon tests
+│   ├── test_checkout_atomic.py     # Atomic stock deduction & overselling prevention
+│   ├── test_auth.py                # Registration, hashing, rate limiting & admin boundaries
+│   └── test_orders.py              # Order isolation & status state machine tests
 │
 ├── Backend/
-│   ├── app.py                      # Flask REST API, authentication, admin endpoints & SPA router
-│   ├── easycart.db                 # Live SQLite database with all tables and columns
-│   ├── easycart.db.backup          # Initial safety checkpoint backup
-│   ├── migrate_admin_features.py   # Database migration utility for admin tables
-│   └── products.json               # Canonical 25-product catalog seed
+│   ├── __init__.py                 # Application factory (create_app) & blueprint registrations
+│   ├── app.py                      # Backend launcher & WSGI instance
+│   ├── config.py                   # Centralized configuration (Dev, Testing, Prod)
+│   ├── extensions.py               # In-memory sliding-window rate limiter & CSRF helpers
+│   ├── easycart.db                 # Live SQLite database with 15 strategic indexes
+│   │
+│   ├── database/                   # Database abstraction layer
+│   │   ├── __init__.py             # Exports get_db, transaction, init_db
+│   │   ├── connection.py           # SQLite & psycopg PostgreSQL connection management
+│   │   ├── models.py               # Idempotent table definitions, migrations & indexes
+│   │   └── seed.py                 # Extracted seed product catalog & coupons
+│   │
+│   ├── common/                     # Shared cross-cutting concerns
+│   │   ├── security.py             # @admin_required, @login_required, password hashing, Google auth
+│   │   ├── validators.py           # Strict email, phone, PIN, cart & magic bytes image validation
+│   │   └── responses.py            # Standardized JSON response helpers
+│   │
+│   ├── auth/                       # Authentication blueprint (/api/auth/*)
+│   ├── products/                   # Product catalog & categories blueprint (/api/products/*)
+│   ├── cart/                       # Server-side cart calculation & coupons (/api/cart/*)
+│   ├── checkout/                   # Transaction-safe atomic checkout (/api/cart/checkout)
+│   ├── orders/                     # Customer order history (/api/auth/orders)
+│   ├── admin/                      # Comprehensive administrative control (/api/admin/*)
+│   ├── suppliers/                  # Supplier directory & management (/api/admin/suppliers/*)
+│   ├── migrations/                 # Database schema migration scripts
+│   └── scripts/                    # Maintenance & utility scripts
 │
 ├── banner/                         # Category photography & transparent brand graphics
-│   ├── Electronics.png
-│   ├── Grocery.png
-│   ├── Fashion.png
-│   ├── Home-Kitchen.png
-│   ├── Beauty.png
-│   ├── Books.png
-│   ├── Fitness.png
-│   ├── Toys.png
-│   └── EasyCart logo transparent.png
 │
 └── Frontend/                       # React 18 + TypeScript + Vite Single Page Application
     ├── index.html                  # HTML entry point (Inter font & meta configuration)
@@ -139,41 +164,14 @@ EasyCart/
     ├── postcss.config.js           # PostCSS Tailwind and Autoprefixer plugins
     │
     ├── public/                     # Static assets served in development and production
-    │   ├── banner/                 # Category banners and brand imagery
-    │   └── static/images/          # Product SVG vectors (p1.svg - p25.svg)
-    │
     ├── dist/                       # Compiled production bundle served directly by Flask
-    │   ├── index.html
-    │   └── assets/                 # Minified and fingerprinted JS & CSS bundles
     │
     └── src/
         ├── types/                  # Strict TypeScript interfaces
         ├── services/api.ts         # Centralized API service layer with all storefront & admin endpoints
         ├── context/                # AuthContext, CartContext, ThemeContext
         ├── styles/                 # crystal-theme.css (glass tokens, specular highlights)
-        │
-        └── components/
-            ├── common/             # Button, Input, Modal, Toast
-            ├── layout/             # AnnouncementBar, Navbar, CategoryNav, Footer (Crystal Wave)
-            ├── products/           # HeroBanner, CategoryShowcase, FilterToolbar, ProductCard, ProductGrid, ProductDetailsModal
-            ├── cart/               # CartDrawer (pearl-white/dark glass, coupon chips, stepper)
-            ├── auth/               # AuthModal (Sign In / Register), AccountModal, OrdersModal
-            ├── checkout/           # CheckoutModal (2-column layout), InvoiceModal (printable receipt)
-            └── admin/              # Complete Admin Control Center
-                ├── AdminLayout.tsx         # 13-item navigation sidebar & executive header
-                ├── AdminDashboard.tsx      # Main coordinator & tab dispatcher
-                ├── AdminOverview.tsx       # Live KPI overview & low-stock watchlist
-                ├── AdminProducts.tsx       # Product SKU management & catalog CRUD
-                ├── AdminInventory.tsx      # Real-time stock control & inline stepper
-                ├── AdminCategories.tsx     # Department merchandising & category banners
-                ├── AdminOffers.tsx         # Promotions, coupons & usage metrics
-                ├── AdminOrders.tsx         # Order fulfillment, tracking & status updates
-                ├── AdminSales.tsx          # Real sales revenue, date filters & CSV exports
-                ├── AdminCustomers.tsx      # Customer accounts, session revocation & safeguards
-                ├── AdminLoginActivity.tsx  # Login security activity & brute-force monitoring
-                ├── AdminAnalytics.tsx      # Commerce intelligence & trajectory charts
-                ├── AdminActivityLog.tsx    # Administrative audit trail log
-                └── AdminSettings.tsx       # System parameters & superadmin access list
+        └── components/             # React component hierarchy (storefront, cart, auth, admin)
 ```
 
 ---
@@ -181,6 +179,60 @@ EasyCart/
 ## 🚀 How to Run the Application
 
 ### Option 1: Standalone Flask (Production Mode — Recommended)
+The React application has already been compiled into `Frontend/dist`. The Python Flask server automatically serves the compiled SPA:
+
+```bash
+# Start Flask server
+python app.py
+```
+- Storefront URL: **`http://127.0.0.1:5000/`**
+- Admin Control Center: **`http://127.0.0.1:5000/admin`**
+
+### Production WSGI Server (Render / Cloud Deployment)
+```bash
+gunicorn app:app
+```
+
+### Option 2: Vite Dev Server with Live Reload (Development Mode)
+Run two parallel processes for full hot-module replacement (HMR):
+
+**Terminal 1 (Backend REST API):**
+```bash
+python app.py
+```
+
+**Terminal 2 (React Vite Dev Server):**
+```bash
+cd Frontend
+npm run dev
+```
+- Dev Storefront URL: **`http://localhost:5173/`**
+- Dev Admin URL: **`http://localhost:5173/admin`**
+*(Vite proxies all `/api`, `/banner`, and `/static` requests to Flask at port 5000).*
+
+---
+
+## 🧪 Comprehensive Automated Testing Suite
+
+EasyCart includes **167 automated tests** across two complementary test suites:
+
+### 1. Unified Test Runner
+To run all unit and regression tests in a single command:
+```bash
+python run_tests.py
+```
+
+Or run suites independently:
+```bash
+python run_tests.py unit       # Runs 23 modular unit tests (tests/)
+python run_tests.py regress    # Runs 144 regression tests (test_regression.py)
+```
+
+### 2. Pytest Support
+If `pytest` is installed in your environment:
+```bash
+pytest tests/ -v
+```
 The React application has already been compiled into `Frontend/dist`. The Python Flask server automatically serves the compiled SPA:
 
 ```bash

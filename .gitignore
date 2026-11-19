@@ -1,7 +1,6 @@
 # Node / Frontend
 node_modules/
 Frontend/node_modules/
-Frontend/dist/
 *.tsbuildinfo
 
 # Python
@@ -9,7 +8,6 @@ __pycache__/
 *.py[cod]
 *.pyo
 *.egg-info/
-dist/
 build/
 *.egg
 
@@ -20,14 +18,28 @@ env/
 
 # Environment variables and secrets
 .env
-.env.local
-.env.production
+.env.*
+!.env.example
 .dev_secret.key
 *.key
 
-# SQLite database (not used in production, but exclude anyway)
+# SQLite database and backups
 *.db
+*.sqlite
 *.sqlite3
+*.backup
+*.db.backup
+
+# Local uploads
+Backend/uploads/*
+Frontend/public/uploads/*
+!Backend/uploads/.gitkeep
+!Frontend/public/uploads/.gitkeep
+
+# Test artifacts and caches
+.pytest_cache/
+.coverage
+htmlcov/
 
 # OS files
 .DS_Store
@@ -39,18 +51,3 @@ Thumbs.db
 
 # Logs
 *.log
-
-
-# Python cache files
-__pycache__/
-*.py[cod]
-
-# Local SQLite databases
-*.db
-*.sqlite
-*.sqlite3
-
-# Environment variables and secrets
-.env
-.env.*
-!.env.example

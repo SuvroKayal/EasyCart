@@ -7,8 +7,13 @@ Run this script with your DATABASE_URL set:
 import os
 import sys
 import sqlite3
-import psycopg
-from psycopg.rows import dict_row
+
+try:
+    import psycopg
+    from psycopg.rows import dict_row
+except ImportError:
+    print("ERROR: psycopg is required to run migration. Install it via: pip install psycopg[binary]")
+    sys.exit(1)
 
 BACKEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Backend')
 DB_FILE = os.path.join(BACKEND_DIR, 'easycart.db')
@@ -128,8 +133,7 @@ def migrate():
     pg_conn.commit()
     sqlite_conn.close()
     pg_conn.close()
-    print("\n🎉 Full migration from SQLite to Supabase PostgreSQL completed successfully!")
+    print("\nFull migration from SQLite to Supabase PostgreSQL completed successfully!")
 
 if __name__ == '__main__':
     migrate()
-
